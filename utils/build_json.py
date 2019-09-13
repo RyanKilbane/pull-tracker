@@ -1,7 +1,4 @@
-def build_json(operation, issues=None, repos=None):
-    output_json = {operation: {}}
+def build_json(repo, issues=None):
     if issues is None:
-        return output_json
-    for repo in repos:
-        output_json[operation][repo] = []
-    return output_json
+        return {repo: {}}
+    return {repo: [{"issue_name": issue.title} for issue in issues]}

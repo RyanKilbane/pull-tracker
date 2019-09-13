@@ -1,11 +1,12 @@
 from concurrent.futures import ThreadPoolExecutor as tp
 from github import Github
+import os
 
 class Repo:
     def __init__(self):
         self.repos = ["ONSDigital/takeon-ui", "ONSDigital/takeon-business-layer", "ONSDigital/takeon-persistence-layer",
                       "ONSDigital/takeon-response-persistence-lambda"]
-        self.git = Github()
+        self.git = Github(os.environ["git_token"])
     
     def add_repo(self, repo):
         self.repos.append("ONSDigital/{}".format(repo))

@@ -10,8 +10,7 @@ class DummyRepo:
 
 dummy = DummyRepo("an issue", "a repo")
 def test_build_issue_json():
-    assert build_json("issue") == {"issue": {}}
+    assert build_json("A Repo") == {"A Repo": {}}
 
-def test_build_json_repos():
-    repo_names = ["repo1", "repo2", "repo3"]
-    assert build_json("issues", issues="", repos=repo_names) == {"issues": {"repo1": [], "repo2": [], "repo3": []}}
+def test_build_issue_json_with_issues():
+    assert build_json("A Repo", issues=["issue1", "issue2"]) == {"A Repo": [{"issue_name": "issue1"}, {"issue_name": "issue2"}]}
