@@ -7,11 +7,36 @@
         <h1>TakeOn Git Tracker</h1>
     </div>
 
-    <div class="repo_card">
-        <div class="container">
-            <h4><b>A Repo</b></h4>
-            <p>Pull name</p>
-        </div>
+    <div id="card_container">
     </div>
 
+
+<script>
+    $.when(setInterval(function emptyDiv(){
+        $("#card_container").empty();
+    }, 10000)).done(getData);
+
+    function getData(){
+        $.ajax({
+            type: 'GET',
+            url: '/pulls'
+        }).done(updateCardContainer)
+    }
+
+    function updateCardContainer(data){
+        var repos = JSON.parse(data);
+        for (var i=0; i < repos.length; i++){
+            var html = `<div class=repo_card><div class=container>`
+            for (var key in repos[i]){
+                console.log(repos[i][key][0].pull_name)
+                for(var j=0; j < repos[i][key].length; j++){
+                    html += `<h4><b>${key}</h4></b>`
+                    html += `<p>${repos[i][key][j].pull_name}</p>`
+                }
+            }
+            html += `</div></div>`;
+            $("#card_container").append(html)
+        }
+    }
+</script>
 {% endblock content %}
