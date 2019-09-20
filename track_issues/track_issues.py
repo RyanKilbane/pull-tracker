@@ -12,5 +12,6 @@ def issues():
     open_issues = []
     for repo in repos:
         open_issues.append(build_json(repo.name, issues=repo.get_pulls(state="open"), issue_type="pull"))
+    print(open_issues)
     # output_issues = filter_issues(open_issues)
     return (json.dumps(open_issues), 200)
