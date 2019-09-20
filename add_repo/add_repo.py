@@ -1,4 +1,5 @@
 from flask import render_template_string, request, Blueprint
+from sqlite3 import IntegrityError
 from repos.repo import git
 
 add_repo_blueprint = Blueprint(name="add_repo",import_name=__name__, url_prefix="/")
@@ -12,5 +13,5 @@ def add_repo():
         git.add_repo(new_repo)
         print(git.repos)
         return ("Added", 200)
-    except Exception as error:
+    except IntegrityError as error:
         return (str(error), 500)

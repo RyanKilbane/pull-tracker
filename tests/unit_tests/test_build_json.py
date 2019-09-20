@@ -1,5 +1,5 @@
 from utils.build_json import build_json
-from tests.dummy_repo import DummyRepo
+from tests.unit_tests.dummy_repo import DummyRepo
 
 def test_build_issue_json():
     assert build_json("A Repo") == {"A Repo": {}}

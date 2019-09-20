@@ -1,5 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor as tp
+import sqlite3 as sql
+from sqlite3 import IntegrityError
 from github import Github
+from db_interface.create_database import database
 import os
 
 class Repo:
@@ -9,6 +12,7 @@ class Repo:
         self.git = Github(token)
     
     def add_repo(self, repo):
+        database.add_repo("ONSDigital/{}".format(repo))
         self.repos.add("ONSDigital/{}".format(repo))
 
     def get_repos(self):
