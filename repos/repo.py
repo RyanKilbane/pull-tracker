@@ -1,23 +1,27 @@
 from concurrent.futures import ThreadPoolExecutor as tp
 import sqlite3 as sql
-from sqlite3 import IntegrityError
 from github import Github
 from db_interface.create_database import database
 import os
 
 class Repo:
     def __init__(self, token):
-        self.repos = set(["ONSDigital/takeon-ui", "ONSDigital/takeon-business-layer", "ONSDigital/takeon-persistence-layer",
-                      "ONSDigital/takeon-response-persistence-lambda"])
+        self.repos = []
         self.git = Github(token)
     
     def add_repo(self, repo):
         database.add_repo("ONSDigital/{}".format(repo))
-        self.repos.add("ONSDigital/{}".format(repo))
+
+    def poll_database(self):
+        repos = []
+        for repo in database.get_repos().fetchall():
+            repos.append(repo[0])
+        return repos
 
     def get_repos(self):
+        saved_repos = self.poll_database()
         with tp(max_workers=5) as executor:
-            repo = executor.map(self.git.get_repo, self.repos)
+            repo = executor.map(self.git.get_repo, saved_repos)
         return list(repo)
 
 git = Repo(os.environ["git_token"])

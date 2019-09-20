@@ -24,6 +24,11 @@ class DatabaseSetup:
         add_repo = "INSERT INTO {} VALUES ('{}')".format(self.repo_table, new_repo)
         cursor = self.db_connection.cursor()
         cursor.execute(add_repo)
-        self.db_connection.commit()      
+        self.db_connection.commit() 
+
+    def get_repos(self):
+        get_repos = "SELECT * FROM {}".format(self.repo_table)
+        cursor = self.db_connection.cursor()
+        return cursor.execute(get_repos)
 
 database = DatabaseSetup("repos", "repos_db")
