@@ -14,3 +14,12 @@
 .container {
     padding: 2px 16px;
   }
+body {
+  background-color: black;
+}
+h1{
+  color: white;
+}
+p{
+  color: white;
+}

@@ -7,13 +7,14 @@
         <h1>TakeOn Pull Tracker</h1>
     </div>
 
-    <div id="card_container">
-    </div>
-
+    <body>
+        <div id="card_container">
+        </div>
+    </body>
 
     <script>
         function wrapper(){
-        
+         
         getData()
         function getData(){
             $.ajax({
@@ -25,23 +26,23 @@
         function updateCardContainer(data){
             $("#card_container").empty();
             var repos = JSON.parse(data);
-            console.log(repos)
+            //console.log(repos)
             for (var i=0; i < repos.length; i++){
                 for (var key in repos[i]){
                     for(var j=0; j < repos[i][key].length; j++){
                         var pull = repos[i][key][j].pull_name
-                        console.log(pull)
-                        console.log(repos[i][key][j])
-                        var html = `<div class=repo_card><div class=container>`
-                        html += `<h4><b>${key}</h4></b>`
+                     //   console.log(pull)
+                       // console.log(repos[i][key][j])
+                        var html = `<div class=repo_card><a href=https://github.com/ONSDigital/${key}/pull/${repos[i][key][j].pull_number}><div class=container>`
+                        html += `<h3><b>${key}</h3></b>`
                         html += `<p>${repos[i][key][j].pull_name}</p>`
                         html += `<h4>Requested for Review</h4>`
                         var reviewers = repos[i][key][j].reviewers
                         for(var k=0; k<reviewers.length; k++){
-                            console.log(reviewers[k].reviewer)
+                        //    console.log(reviewers[k].reviewer)
                             html += `<p>${reviewers[k].reviewer}</p><img src=${reviewers[k].avatar} width=10%>`
                         }
-                        console.log(reviewers)
+                        //console.log(reviewers)
                         html += `</div></div>`;
                         $("#card_container").append(html)
                     }

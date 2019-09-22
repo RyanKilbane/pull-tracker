@@ -5,12 +5,13 @@ from db_interface.create_database import database
 import os
 
 class Repo:
-    def __init__(self, token):
+    def __init__(self, token, owner):
         self.repos = []
         self.git = Github(token)
-    
+        self.owner = owner
+
     def add_repo(self, repo):
-        database.add_repo("ONSDigital/{}".format(repo))
+        database.add_repo("{}/{}".format(self.owner, repo))
 
     def poll_database(self):
         repos = []
@@ -24,4 +25,4 @@ class Repo:
             repo = executor.map(self.git.get_repo, saved_repos)
         return list(repo)
 
-git = Repo(os.environ["git_token"])
+git = Repo(os.environ["git_token"], "ONSDigital")
