@@ -17,6 +17,11 @@ try:
 except OperationalError as error:
     print("table already exists, skipping")
 
+try:
+    database.create_user_table()
+except OperationalError as error:
+    print("table already exists, skipping")    
+
 app = Flask(__name__, template_folder="pages", static_folder="static")
 
 app.register_blueprint(add_repo_blueprint)

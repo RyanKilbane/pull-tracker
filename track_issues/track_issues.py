@@ -3,7 +3,6 @@ from utils.build_json import build_json
 from utils.filter_no_issues import filter_issues
 from flask import Blueprint
 import json
-from github.GithubException import UnknownObjectException
 
 track_issues = Blueprint(name="track_issues", import_name=__name__, url_prefix="/")
 
