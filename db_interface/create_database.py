@@ -1,4 +1,5 @@
 import sqlite3 as sql
+import yaml
 
 class DatabaseSetup:
     def __init__(self, repo_table_name, db_name):
@@ -31,4 +32,7 @@ class DatabaseSetup:
         cursor = self.db_connection.cursor()
         return cursor.execute(get_repos)
 
-database = DatabaseSetup("repos", "repos_db")
+with open("setup.yml", "r") as file:
+    setup_data = yaml.load(file.read())
+
+database = DatabaseSetup(setup_data["repo_table"], setup_data["database_name"])

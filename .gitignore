@@ -3,6 +3,11 @@
 
 # database
 repos_db
+pull_tracking
+
+# config files
+*.yml
+*.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,9 +1,14 @@
+import os
 from flask import Flask
 from add_repo.add_repo import add_repo_blueprint
 from track_issues.track_issues import track_issues
 from dashboard.dashboard import dashboard_blueprint
 from db_interface.create_database import database
 from sqlite3 import OperationalError
+from setup import InitialSetup
+
+if not os.path.isfile("setup.yml"):
+    InitialSetup().make_dict().write_yaml()
 
 database.crate_database()
 try:
