@@ -1,8 +1,10 @@
 from concurrent.futures import ThreadPoolExecutor as tp
 import sqlite3 as sql
 from github import Github
+from github.GithubException import UnknownObjectException
 from db_interface.create_database import database
 import os
+import yaml
 
 class Repo:
     def __init__(self, token, owner):
@@ -23,6 +25,21 @@ class Repo:
         saved_repos = self.poll_database()
         with tp(max_workers=5) as executor:
             repo = executor.map(self.git.get_repo, saved_repos)
-        return list(repo)
+        repo_list = self.build_list(repo)
+        return repo_list
 
-git = Repo(os.environ["git_token"], "ONSDigital")
+    def build_list(self, repos):
+        output_list = []
+        try:
+            for repo in repos:
+                print(repo)
+                output_list.append(repo)
+        except UnknownObjectException as error:
+            print("A repo returned 404, this likely means that the repo doesn't exist")
+        return output_list
+
+
+with open("setup.yml", "r") as file:
+    setup_data = yaml.load(file.read())
+
+git = Repo(os.environ[setup_data["git_token"]], setup_data["repo_owner"])
