@@ -1,7 +1,7 @@
 class DummyRepo:
     def __init__(self, issue_name, repo_name, issue_number):
         self.title = issue_name
-        self.repo = repo_name
+        self.name = repo_name
         self.number = issue_number
     def get_issues(self):
         return self.issue
