@@ -6,6 +6,14 @@
     <input placeholder="Repo name" id="repo_name">
     <button id="add_button" submit>Add</button>
 </div>
+<br>
+<br>
+<div>
+    <h2>Currently tracked repos</h2>
+    {% for repo in tracked_repos %}
+        <h4>{{ repo }}</h4>
+    {% endfor %}
+</div>
 
 <script>
     function getRepoName(){

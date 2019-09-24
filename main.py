@@ -28,4 +28,4 @@ app.register_blueprint(add_repo_blueprint)
 app.register_blueprint(track_issues)
 app.register_blueprint(dashboard_blueprint)
 
-app.run()
+app.run(host="0.0.0.0", threaded=True)

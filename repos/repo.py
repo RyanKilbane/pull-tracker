@@ -23,7 +23,7 @@ class Repo:
 
     def get_repos(self):
         saved_repos = self.poll_database()
-        with tp(max_workers=5) as executor:
+        with tp(max_workers=8) as executor:
             repo = executor.map(self.git.get_repo, saved_repos)
         repo_list = self.build_list(repo)
         return repo_list
