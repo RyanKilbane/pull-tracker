@@ -3,7 +3,6 @@ from sqlite3 import IntegrityError
 from repos.repo import git
 import json
 from db_interface.create_database import database
-from utils.build_json import build_json
 
 add_repo_blueprint = Blueprint(name="add_repo",import_name=__name__, url_prefix="/")
 
