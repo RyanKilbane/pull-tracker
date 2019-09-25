@@ -28,6 +28,14 @@ a:link{
   color: white;
 }
 
+a:visited{
+  color: rgb(196, 189, 188);
+}
+
+a:hover{
+  color: rgb(150, 143, 141);
+}
+
 h2{
   color: white;
 }
