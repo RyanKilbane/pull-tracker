@@ -8,7 +8,7 @@
     </div>
 
     <body>
-        <div id="card_container">
+        <div id="card_container" class="grid-container">
         </div>
     </body>
 
@@ -33,7 +33,8 @@
                         var pull = repos[i][key][j].pull_name
                      //   console.log(pull)
                        // console.log(repos[i][key][j])
-                        var html = `<div class=repo_card><a href=https://github.com/ONSDigital/${key}/pull/${repos[i][key][j].pull_number}><div class=container>`
+                        var html = `<div class=grid-item>`
+                        html += `<div class=repo_card><a href=https://github.com/ONSDigital/${key}/pull/${repos[i][key][j].pull_number}><div class=container>`
                         html += `<h3><b>${key}</h3></b>`
                         html += `<p>${repos[i][key][j].pull_name}</p>`
                         html += `<h4>Requested for Review</h4>`
@@ -43,7 +44,7 @@
                             html += `<p>${reviewers[k].reviewer}</p><img src=${reviewers[k].avatar} width=10%>`
                         }
                         //console.log(reviewers)
-                        html += `</div></div>`;
+                        html += `</div></div></div>`;
                         $("#card_container").append(html)
                     }
                 }

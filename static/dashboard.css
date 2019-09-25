@@ -2,7 +2,6 @@
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 20%;
   }
   
   /* On mouse-over, add a deeper shadow */
@@ -42,4 +41,14 @@ h2{
 
 h4{
   color: white;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
 }
