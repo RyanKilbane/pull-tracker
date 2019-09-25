@@ -1,12 +1,12 @@
 .repo_card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 #313131;
     transition: 0.3s;
   }
   
   /* On mouse-over, add a deeper shadow */
 .repo_card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 #313131;
   }
   
   /* Add some padding inside the card container */
@@ -15,10 +15,11 @@
   }
 
 body{
-  background: rgb(63, 82, 99);
+  background: #525252;
 }
 h1{
   color: white;
+  font-size: 40px;
 }
 p{
   color: white;
@@ -42,13 +43,17 @@ h2{
 h4{
   color: white;
 }
+
+h3{
+  font-size: 30px
+}
 .grid-container{
   display: grid;
   grid-template-columns: auto auto auto;
 }
 .grid-item {
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
+  padding: 10px;
+  font-size: 20px;
   text-align: center;
 }
+/* Scheme: https://colorhunt.co/palette/149559 */
