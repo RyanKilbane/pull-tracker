@@ -10,12 +10,12 @@ add_repo_blueprint = Blueprint(name="add_repo",import_name=__name__, url_prefix=
 def add_repo():
     new_repo = request.args.get("repo")
     if new_repo == "":
-        return (json.dumps({"message": "No repo passed"}), 400)
+        return (json.dumps({"message": "No repo passed"}), 200)
     try:
         git.add_repo(new_repo)
         return (json.dumps({"message": "Repo added"}), 200)
     except IntegrityError as error:
-        return (json.dumps({"message": "Repo already exists"}), 500)
+        return (json.dumps({"message": "Repo already exists"}), 200)
 
 @add_repo_blueprint.route("/add", methods=["GET"])
 def get_page():
