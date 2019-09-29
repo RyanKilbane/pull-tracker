@@ -30,9 +30,6 @@ class InitialSetup:
             admin_email = input("Enter admin email: ")
             admin_salt = ''.join(random.choice(self.salting) for i in range(30))
             admin_password = argon2.argon2_hash(password=input("Enter admin password: "), salt=admin_salt, argon_type=0)
-            print(type(admin_password))
-            print(admin_password)
-            print(str(admin_password))
             admins.append((admin_name, admin_email, admin_salt, admin_password))
             if input("Add another (Y/N): ") != "Y":
                 break
