@@ -1,10 +1,10 @@
 {% extends "./base.html" %}
 
 {% block content %}
-<h1>Add a New Repo</h1>
+<h1>Remove a Git Repo</h1>
 <div class="add_repo_submit">
     <input placeholder="Repo name" id="repo_name">
-    <button id="add_button" submit>Add</button>
+    <button id="add_button" submit>Remove</button>
 </div>
 <br>
 <br>
@@ -27,7 +27,7 @@
 
     function addRepo(){
         var repoName = getRepoName();
-        var post_url = "/add?repo="
+        var post_url = "/remove?repo="
         post_url += repoName;
         $.ajax({
             type: 'POST',

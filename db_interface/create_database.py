@@ -63,6 +63,12 @@ class DatabaseSetup:
         cursor = self.db_connection.cursor()
         return cursor.execute(get_repos)
 
+    def remove_repos(self, repos):
+        cursor = self.db_connection.cursor()
+        # cursor.executemany(f"DELETE FROM {self.repo_table} WHERE repo_name=(?)", repos)
+        cursor.execute(f"DELETE FROM {self.repo_table} WHERE repo_name=?", (repos,))
+        self.db_connection.commit()
+
 with open("setup.yml", "r") as file:
     setup_data = yaml.load(file.read())
 

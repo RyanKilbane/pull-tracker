@@ -20,6 +20,7 @@ body{
 h1{
   color: white;
   font-size: 40px;
+  text-indent: 10px;
 }
 p{
   color: white;
@@ -56,5 +57,13 @@ h3{
   padding: 10px;
   font-size: 20px;
   text-align: center;
+}
+
+.tracked_repos{
+  text-indent: 10px;
+}
+
+.add_repo_submit{
+  text-indent: 10px;
 }
 /* Scheme: https://colorhunt.co/palette/149559 */

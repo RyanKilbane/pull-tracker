@@ -4,6 +4,7 @@ from utils.filter_no_issues import filter_issues
 from flask import Blueprint
 import json
 from concurrent.futures import ProcessPoolExecutor
+import yaml
 
 track_issues = Blueprint(name="track_issues", import_name=__name__, url_prefix="/")
 

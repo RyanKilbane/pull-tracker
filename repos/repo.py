@@ -28,6 +28,9 @@ class Repo:
         repo_list = self.build_list(repo)
         return repo_list
 
+    def remove_repo(self, repo):
+        database.remove_repos("{}/{}".format(self.owner, repo))
+
     def build_list(self, repos):
         output_list = []
         try:
