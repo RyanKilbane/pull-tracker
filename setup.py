@@ -3,6 +3,7 @@ import argon2
 from argon2 import Argon2Type
 import random
 import string
+from users.users import Users
 
 class InitialSetup:
     def __init__(self):
@@ -26,11 +27,10 @@ class InitialSetup:
     def create_admins(self):
         admins = []
         while True:
-            admin_name = input("Enter admin user name: ")
-            admin_email = input("Enter admin email: ")
-            admin_salt = ''.join(random.choice(self.salting) for i in range(30))
-            admin_password = argon2.argon2_hash(password=input("Enter admin password: "), salt=admin_salt, argon_type=0)
-            admins.append((admin_name, admin_email, admin_salt, admin_password))
+            admin_user = Users(input("Enter admin user name: "), input("Enter admin email: "), input("Add password: "), input("Slack username (leave blank to not include): "))
+            admin_salt = admin_user.build_salt()
+            hashed_pass = admin_user.hash_password(admin_salt)
+            admins.append(admin_user.create_insert_tuple(admin_salt, hashed_pass))
             if input("Add another (Y/N): ") != "Y":
                 break
         return admins
