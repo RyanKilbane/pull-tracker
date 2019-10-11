@@ -1,6 +1,4 @@
 import yaml
-import argon2
-from argon2 import Argon2Type
 import random
 import string
 from users.users import Users
@@ -12,7 +10,6 @@ class InitialSetup:
         self.repo_table = input("What is the name of the repository tabel: ")
         self.user_table = input("What should the user table be called: ")
         self.git_token = input("Where is the Git token located (this should be an environment variable): ")
-        self.salting = string.ascii_letters + "0123456789"
         self.output_dict = None
 
     def make_dict(self):

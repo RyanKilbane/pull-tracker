@@ -4,6 +4,7 @@
 # database
 repos_db
 pull_tracking
+*.sqlite3
 
 # config files
 *.yml
