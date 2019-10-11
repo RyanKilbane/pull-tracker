@@ -1,6 +1,6 @@
 import sqlite3 as sql
 import yaml
-
+from ..construct_setup_yaml import setup_data
 class DatabaseSetup:
     def __init__(self, repo_table_name, db_name, user, admin_table_name):
         self.repo_table = repo_table_name

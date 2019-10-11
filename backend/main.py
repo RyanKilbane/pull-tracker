@@ -1,15 +1,21 @@
 import os
-from setup import InitialSetup
+import yaml
+from backend.setup import InitialSetup
+setup = InitialSetup()
 
-if not os.path.isfile("setup.yml"):
-    setup = InitialSetup().make_dict().write_yaml()
+# if not os.path.isfile("setup.yml"):
+#     setup = InitialSetup().make_dict().write_yaml()
+
+# with open("setup.yml", "r") as file:
+#     setup_data = yaml.load(file.read())
 
 from flask import Flask
-from add_repo.add_repo import add_repo_blueprint
-from remove_repo.remove_repo import remove_repo_blueprint
-from track_issues.track_issues import track_issues
-from dashboard.dashboard import dashboard_blueprint
-from db_interface.create_database import database
+from backend.add_repo.add_repo import add_repo_blueprint
+from backend.remove_repo.remove_repo import remove_repo_blueprint
+from backend.track_issues.track_issues import track_issues
+from backend.dashboard.dashboard import dashboard_blueprint
+from backend.db_interface.create_database import database
+from backend.construct_setup_yaml import setup_data
 from sqlite3 import OperationalError
 
 database.crate_database()

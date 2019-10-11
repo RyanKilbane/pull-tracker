@@ -1,7 +1,7 @@
 import yaml
 import random
 import string
-from users.users import Users
+from .users.users import Users
 from getpass import getpass
 
 class InitialSetup:

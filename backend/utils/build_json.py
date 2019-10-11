@@ -1,5 +1,5 @@
-from utils.get_reviewers import get_reviewers
-from utils.get_user_details import get_user_details
+from backend.utils.get_reviewers import get_reviewers
+from backend.utils.get_user_details import get_user_details
 import yaml
 
 with open("setup.yml", "r") as file:

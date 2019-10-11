@@ -1,4 +1,4 @@
-from users.users import Users
+from backend.users.users import Users
 
 def test_build_salt():
     a_user = Users("bill", "bill@bill.com", "abcdefg")

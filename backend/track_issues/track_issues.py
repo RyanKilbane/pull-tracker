@@ -1,6 +1,6 @@
-from repos.repo import git
-from utils.build_json import build_json_threads
-from utils.filter_no_issues import filter_issues
+from ..repos.repo import git
+from ..utils.build_json import build_json_threads
+from ..utils.filter_no_issues import filter_issues
 from flask import Blueprint
 import json
 from concurrent.futures import ProcessPoolExecutor

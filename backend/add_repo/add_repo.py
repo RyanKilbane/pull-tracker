@@ -1,8 +1,8 @@
 from flask import render_template, request, Blueprint
 from sqlite3 import IntegrityError
-from repos.repo import git
+from ..repos.repo import git
 import json
-from db_interface.create_database import database
+from ..db_interface.create_database import database
 
 add_repo_blueprint = Blueprint(name="add_repo",import_name=__name__, url_prefix="/")
 

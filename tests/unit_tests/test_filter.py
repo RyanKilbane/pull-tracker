@@ -1,4 +1,4 @@
-from utils.filter_no_issues import filter_issues
+from backend.utils.filter_no_issues import filter_issues
 
 def test_filter_returns_empty_dict():
     issues = {"A repo": []}

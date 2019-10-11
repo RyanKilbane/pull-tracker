@@ -2,7 +2,7 @@ from concurrent.futures import ThreadPoolExecutor as tp
 import sqlite3 as sql
 from github import Github
 from github.GithubException import UnknownObjectException
-from db_interface.create_database import database
+from ..db_interface.create_database import database
 import os
 import yaml
 

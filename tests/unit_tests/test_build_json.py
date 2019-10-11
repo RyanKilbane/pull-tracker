@@ -1,4 +1,4 @@
-from utils.build_json import build_json_threads
+from backend.utils.build_json import build_json_threads
 from tests.unit_tests.dummy_repo import DummyRepo
 
 def test_build_issue_json():
@@ -6,4 +6,3 @@ def test_build_issue_json():
 
 def test_build_issue_json_with_issues():
     assert build_json_threads("A Repo", issues=[DummyRepo("issue1", "A repo", 11), DummyRepo("issue2", "A repo", 11)]) == {"A Repo": [{"issue_name": "issue1", "issue_number": 11, "reviewers": {"reviewer": None}}, {"issue_name": "issue2", "issue_number": 11, "reviewers": {"reviewer": None}}]}
-    
