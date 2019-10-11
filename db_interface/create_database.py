@@ -36,7 +36,8 @@ class DatabaseSetup:
             username varchar(256) UNIQUE NOT NULL,\
             email varchar(256),\
             salt varchar(256),\
-            password blob)".format(self.admin_table)
+            password blob,\
+            slack_user varchar(256))".format(self.admin_table)
         print("Admin table created")
         print(admin_table)
         cursor = self.db_connection.cursor()
@@ -44,7 +45,7 @@ class DatabaseSetup:
 
     def add_admin(self, admins):
         cursor = self.db_connection.cursor()
-        cursor.executemany(f"INSERT INTO {self.admin_table} VALUES (?, ?, ?, ?)", admins)
+        cursor.executemany(f"INSERT INTO {self.admin_table} VALUES (?, ?, ?, ?, ?)", admins)
         self.db_connection.commit()
     
     def add_user(self, new_users):

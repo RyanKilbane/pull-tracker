@@ -2,6 +2,7 @@ import yaml
 import random
 import string
 from users.users import Users
+from getpass import getpass
 
 class InitialSetup:
     def __init__(self):
@@ -24,7 +25,7 @@ class InitialSetup:
     def create_admins(self):
         admins = []
         while True:
-            admin_user = Users(input("Enter admin user name: "), input("Enter admin email: "), input("Add password: "), input("Slack username (leave blank to not include): "))
+            admin_user = Users(input("Enter admin user name: "), input("Enter admin email: "), getpass("Add password: "), input("Slack username (leave blank to not include): "))
             admin_salt = admin_user.build_salt()
             hashed_pass = admin_user.hash_password(admin_salt)
             admins.append(admin_user.create_insert_tuple(admin_salt, hashed_pass))
