@@ -1,9 +1,7 @@
 from backend.utils.get_reviewers import get_reviewers
 from backend.utils.get_user_details import get_user_details
+from backend.construct_setup_yaml import setup_data
 import yaml
-
-with open("setup.yml", "r") as file:
-    setup_data: dict = yaml.load(file.read())
 
 def build_json_threads(repo, issue_type="pull"):
     issues = repo.get_pulls(state="open")

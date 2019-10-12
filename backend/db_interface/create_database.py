@@ -70,7 +70,8 @@ class DatabaseSetup:
         cursor.execute(f"DELETE FROM {self.repo_table} WHERE repo_name=?", (repos,))
         self.db_connection.commit()
 
-with open("setup.yml", "r") as file:
-    setup_data = yaml.load(file.read())
+    def count(self, table):
+        cursor = self.db_connection.cursor()
+        return f"SELECT COUNT(*) FROM {table}"
 
 database = DatabaseSetup(setup_data["repo_table"], setup_data["database_name"], setup_data["user_table"], setup_data["admin_table"])

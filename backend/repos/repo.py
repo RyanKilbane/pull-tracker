@@ -3,6 +3,7 @@ import sqlite3 as sql
 from github import Github
 from github.GithubException import UnknownObjectException
 from ..db_interface.create_database import database
+from ..construct_setup_yaml import setup_data
 import os
 import yaml
 
@@ -40,9 +41,5 @@ class Repo:
         except UnknownObjectException as error:
             print("A repo returned 404, this likely means that the repo doesn't exist")
         return output_list
-
-
-with open("setup.yml", "r") as file:
-    setup_data = yaml.load(file.read())
 
 git = Repo(os.environ[setup_data["git_token"]], setup_data["repo_owner"])

@@ -1,21 +1,13 @@
 import os
 import yaml
 from backend.setup import InitialSetup
-setup = InitialSetup()
-
-# if not os.path.isfile("setup.yml"):
-#     setup = InitialSetup().make_dict().write_yaml()
-
-# with open("setup.yml", "r") as file:
-#     setup_data = yaml.load(file.read())
-
 from flask import Flask
 from backend.add_repo.add_repo import add_repo_blueprint
 from backend.remove_repo.remove_repo import remove_repo_blueprint
 from backend.track_issues.track_issues import track_issues
 from backend.dashboard.dashboard import dashboard_blueprint
 from backend.db_interface.create_database import database
-from backend.construct_setup_yaml import setup_data
+from backend.construct_setup_yaml import setup_data, setup, home
 from sqlite3 import OperationalError
 
 database.crate_database()
@@ -34,11 +26,8 @@ try:
 except OperationalError as error:
     print(error)
     
-if os.path.isfile("setup.yml"):
-    try:
-        database.add_admin(setup.create_admins())
-    except NameError as error:
-        print("A NameError occured, this is likely because the yaml already exists")
+if database.count(setup_data["admin_table"]) == 0:
+    database.add_admin(setup.create_admins())
 
 app = Flask(__name__, template_folder="pages", static_folder="static")
 
