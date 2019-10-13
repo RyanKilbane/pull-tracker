@@ -14,8 +14,6 @@ def add_repo():
     try:
         git.remove_repo(new_repo)
         return (json.dumps({"message": "Repo removed"}), 200)
-    except IntegrityError as error:
-        return (json.dumps({"message": "Repo already exists"}), 200)
 
 @remove_repo_blueprint.route("/remove", methods=["GET"])
 def get_page():
