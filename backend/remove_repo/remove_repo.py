@@ -11,9 +11,8 @@ def add_repo():
     new_repo = request.args.get("repo")
     if new_repo == "":
         return (json.dumps({"message": "No repo passed"}), 200)
-    try:
-        git.remove_repo(new_repo)
-        return (json.dumps({"message": "Repo removed"}), 200)
+    git.remove_repo(new_repo)
+    return (json.dumps({"message": "Repo removed"}), 200)
 
 @remove_repo_blueprint.route("/remove", methods=["GET"])
 def get_page():
