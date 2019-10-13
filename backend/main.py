@@ -25,8 +25,8 @@ try:
     database.create_admin_table()
 except OperationalError as error:
     print(error)
-    
-if database.count(setup_data["admin_table"]) == 0:
+
+if database.count(setup_data["admin_table"]).fetchone()[0] == 0:
     database.add_admin(setup.create_admins())
 
 app = Flask(__name__, template_folder="pages", static_folder="static")

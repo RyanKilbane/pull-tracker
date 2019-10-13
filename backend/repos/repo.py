@@ -24,22 +24,12 @@ class Repo:
 
     def get_repos(self):
         saved_repos = self.poll_database()
-        with tp(max_workers=8) as executor:
+        with tp(max_workers=3) as executor:
             repo = executor.map(self.git.get_repo, saved_repos)
-        repo_list = self.build_list(repo)
-        return repo_list
+        # repo_list = self.build_list(repo)
+        return list(repo)
 
     def remove_repo(self, repo):
         database.remove_repos("{}/{}".format(self.owner, repo))
-
-    def build_list(self, repos):
-        output_list = []
-        try:
-            for repo in repos:
-                print(repo)
-                output_list.append(repo)
-        except UnknownObjectException as error:
-            print("A repo returned 404, this likely means that the repo doesn't exist")
-        return output_list
 
 git = Repo(os.environ[setup_data["git_token"]], setup_data["repo_owner"])

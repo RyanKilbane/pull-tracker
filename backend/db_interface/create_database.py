@@ -38,8 +38,6 @@ class DatabaseSetup:
             salt varchar(256),\
             password blob,\
             slack_user varchar(256))".format(self.admin_table)
-        print("Admin table created")
-        print(admin_table)
         cursor = self.db_connection.cursor()
         cursor.execute(admin_table)
 
@@ -72,6 +70,6 @@ class DatabaseSetup:
 
     def count(self, table):
         cursor = self.db_connection.cursor()
-        return f"SELECT COUNT(*) FROM {table}"
+        return cursor.execute(f"SELECT COUNT(*) FROM {table}")
 
 database = DatabaseSetup(setup_data["repo_table"], setup_data["database_name"], setup_data["user_table"], setup_data["admin_table"])
