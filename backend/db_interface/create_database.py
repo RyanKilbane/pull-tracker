@@ -9,7 +9,7 @@ class DatabaseSetup:
         self.db_connection = None
         self.admin_table = admin_table_name
 
-    def crate_database(self):
+    def create_database(self):
         try:
             connect = sql.connect(self.db, check_same_thread=False)
             self.db_connection = connect
